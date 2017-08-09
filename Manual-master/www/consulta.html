@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }  @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }           @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+    </style>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="vendor/wow/animate.css" />
+    <link rel="stylesheet" href="css/nativedroid2.css" />
+    <link rel="stylesheet" href="css/nativedroid2.color.red.css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.mobile.min.js"></script>
+    <script src="vendor/waves/waves.min.js"></script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="js/nativedroid2.js"></script>
+    <script src="nd2settings.js"></script>
+    <script src="js/search.js"></script>
+
+
+    <!-- Uncomment the following scripts if you convert your "Standard HTML5" project into a "Cordova" project. -->
+    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <script src="js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+
+
+    <script type="text/javascript">
+    function enviarConsulta(asunto, detalle, email, telefono){
+            if(!asunto || !detalle || !telefono){
+                $("#validacion").popup("open");
+            }else{
+                var parametros = {
+                    "asunto" : asunto,
+                    "detalle" : detalle,
+                    "email" : email,
+                    "telefono": telefono
+                };
+                $.ajax({
+                data:  parametros, //datos que se envian a traves de ajax
+                url:   'http://104.171.5.69/~mmmanr/manual/agregar.php', //archivo que recibe la peticion
+                type:  'post', //método de envio
+                beforeSend: function () {
+                    $("#loader").popup("open");
+                    console.log("Inicio");
+                },
+                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                    console.log("Fin");
+                    console.log(response);
+                    $("#loader").popup("close");
+                    $("#loader").on("popupafterclose", function ()
+                    {
+                            //any action you want like opening another popup
+                            setTimeout(function()
+                            {
+                                if(response == 'OK'){
+                                   $("#exito").popup("open");
+                               }else{
+                                   $("#error").popup("open");
+                               }
+
+                           }, 100);
+                        });
+                },
+                error: function(){
+                    // will fire when timeout is reached
+                    console.log("Error");
+                    console.log(response);
+                    $("#loader").popup("close");
+                    $("#loader").on("popupafterclose", function ()
+                    {
+                       setTimeout(function()
+                       {
+                        $("#error").popup("open");
+                    }, 100);
+                   });
+                },
+                timeout: 20000 // sets timeout to 20 seconds
+            });
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div data-role="page">
+        <nd2-include data-src="panel.left.html"></nd2-include>
+        <div data-role="header" data-position="fixed" class="wow">
+            <a href="#leftpanel" class="ui-btn ui-btn-left wow" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+            <h1 class="wow" data-wow-delay='0.4s'>Manual</h1>
+        </div>
+
+        <div data-role="main" class="ui-content" style="background-color: white">
+
+            <h2 style="color: #BA0000">Consulta</h2>
+
+            <form id="consultaForm">
+                <label for="asunto">Asunto:</label>
+                <input type="text" name="asunto" id="asunto" value="" data-clear-btn="true">
+
+
+                <label for="detalle">Detalle de la consulta:</label>
+                <textarea cols="40" rows="8" name="detalle" id="detalle"></textarea>
+
+
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" value="" data-clear-btn="true">
+
+
+                <label for="phone">Celular:</label>
+                <input type="text" name="phone" id="phone" value="" data-clear-btn="true"
+                placeholder="(XXXX) XXX-XXX" maxlength="14">
+
+                <br>
+
+                <a href="#" class="ui-btn ui-btn-raised clr-primary" onclick="enviarConsulta($('#asunto').val(), $('#detalle').val(),$('#email').val(),$('#phone').val());return false;">
+                    Enviar
+                </a>
+
+
+        </form>
+
+
+        <div data-role="popup" id="loader" data-position-to="window" data-transition="pop"
+        data-dismissible="false">
+        <img src='img/ajax-loader.gif'/>
+    </div>
+
+
+    <div data-role="popup" id="validacion" data-position-to="window" data-transition="pop">
+        <div data-role="header">
+            <h1 class='nd-title'>Datos requeridos</h1>
+        </div>
+        <div data-role="content" style="background-color: white">
+            <br>
+            <p>Ingrese los campos Asunto, Detalle y Celular!</p>
+            <br>
+            <a href="#" data-rel="back" data-role="button" data-inline="true"
+            class="ui-btn ui-btn-raised clr-primary"><i class='zmdi zmdi-check'></i> Aceptar</a>
+        </div>
+    </div>
+
+    <div data-role="popup" id="error" data-position-to="window" data-transition="pop">
+        <div data-role="header">
+            <h1 class='nd-title'>Error</h1>
+        </div>
+        <div data-role="content" style="background-color: white">
+            <br>
+            <p>Ha ocurrido un error! Por favor, vuelva a intentarlo.</p>
+            <br>
+            <a href="#" data-rel="back" data-role="button" data-inline="true"
+            class="ui-btn ui-btn-raised clr-primary"><i class='zmdi zmdi-check'></i> Aceptar</a>
+        </div>
+    </div>
+
+    <div data-role="popup" id="exito" data-position-to="window" data-transition="pop"
+    data-dismissible="false">
+    <div data-role="header">
+        <h1 class='nd-title'>Info</h1>
+    </div>
+    <div data-role="content" style="background-color: white">
+        <br>
+        <p>Consulta registrada correctamente!</p>
+        <br>
+        <a href="index.html" data-role="button" data-inline="true"
+        class="ui-btn ui-btn-raised clr-primary"><i class='zmdi zmdi-check'></i> Continuar</a>
+    </div>
+</div>
+
+</div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $('#phone', '#consultaForm')
+    .keydown(function (e) {
+        var key = e.which || e.charCode || e.keyCode || 0;
+        $phone = $(this);
+
+    // Don't let them remove the starting '('
+    if ($phone.val().length === 1 && (key === 8 || key === 46)) {
+        $phone.val('(');
+        return false;
+    }
+    // Reset if they highlight and type over first char.
+    else if ($phone.val().charAt(0) !== '(') {
+        $phone.val('('+$phone.val());
+    }
+
+    // Auto-format- do not expose the mask as the user begins to type
+    if (key !== 8 && key !== 9) {
+        if ($phone.val().length === 5) {
+            $phone.val($phone.val() + ')');
+        }
+        if ($phone.val().length === 6) {
+            $phone.val($phone.val() + ' ');
+        }
+        if ($phone.val().length === 10) {
+            $phone.val($phone.val() + '-');
+        }
+    }
+
+    // Allow numeric (and tab, backspace, delete) keys only
+    return (key == 8 ||
+        key == 9 ||
+        key == 46 ||
+        (key >= 48 && key <= 57) ||
+        (key >= 96 && key <= 105));
+})
+
+    .bind('focus click', function () {
+        $phone = $(this);
+
+        if ($phone.val().length === 0) {
+            $phone.val('(');
+        }
+        else {
+            var val = $phone.val();
+        $phone.val('').val(val); // Ensure cursor remains at the end
+    }
+})
+
+    .blur(function () {
+        $phone = $(this);
+
+        if ($phone.val() === '(') {
+            $phone.val('');
+        }
+    });
+</script>
+
+
+</html>
+
+            <!--
+            Resultado: <span id="resultado"></span>
+        -->

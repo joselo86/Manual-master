@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Muestras</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <style>
+            /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+            @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }  @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+            @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }           @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        </style>
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+        <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+        <link rel="stylesheet" href="vendor/wow/animate.css" />
+        <link rel="stylesheet" href="css/nativedroid2.css" />
+        <link rel="stylesheet" href="css/nativedroid2.color.red.css" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+        <script src="vendor/waves/waves.min.js"></script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="js/nativedroid2.js"></script>
+        <script src="nd2settings.js"></script>
+        <script src="js/search.js"></script>
+
+        <!-- Uncomment the following scripts if you convert your "Standard HTML5" project into a "Cordova" project. -->
+        <!-- <script src="cordova.js"></script> -->          <!-- phantom library, needed for Cordova api calls, added during build -->
+        <!-- <script src="js/app.js"></script> -->           <!-- recommended location of your JavaScript code relative to other JS files -->
+        <!-- <script src="xdk/init-dev.js"></script> -->     <!-- normalizes device and document ready events, see README for details -->
+    </head>
+
+    <body>
+        <div data-role="page">
+            <nd2-include data-src="panel.left.html"></nd2-include>
+            <div data-role="header" data-position="fixed" class="wow">
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+                <h1 class="wow" data-wow-delay='0.4s'>Manual</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+
+<center>  <img src="img/card-bg-out/acerca.png"></center>
+<p>
+</p>
+
+<center>    <a href="https://www.facebook.com/insoportablementecolorado"><img src="img/fb.png"> </a>
+  <a href="https://twitter.com/insoportablecol"><img src="img/tw.png"></a></center>
+            </div>
+
+        </div>
+    </body>
+</html>

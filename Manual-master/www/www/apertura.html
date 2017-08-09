@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contenido 2</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+        <style>
+            /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+            @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }  @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+            @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }           @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        </style>
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+        <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+        <link rel="stylesheet" href="vendor/wow/animate.css" />
+        <link rel="stylesheet" href="css/nativedroid2.css" />
+        <link rel="stylesheet" href="css/nativedroid2.color.red.css" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+        <script src="vendor/waves/waves.min.js"></script>
+        <script src="vendor/wow/wow.min.js"></script>
+        <script src="js/nativedroid2.js"></script>
+        <script src="nd2settings.js"></script>
+        <script src="js/search.js"></script>
+
+        <!-- Uncomment the following scripts if you convert your "Standard HTML5" project into a "Cordova" project. -->
+        <!-- <script src="cordova.js"></script> -->          <!-- phantom library, needed for Cordova api calls, added during build -->
+        <!-- <script src="js/app.js"></script> -->           <!-- recommended location of your JavaScript code relative to other JS files -->
+        <!-- <script src="xdk/init-dev.js"></script> -->     <!-- normalizes device and document ready events, see README for details -->
+    </head>
+
+    <body>
+        <div data-role="page">
+            <nd2-include data-src="panel.left.html"></nd2-include>
+            <div data-role="header" data-position="fixed" class="wow">
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+                <h1 class="wow" data-wow-delay='0.4s'>Manual</h1>
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <h2>Apertura y Proceso de Votación</h2>
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura0.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                          Los Miembros de la Mesas deberán revisar y mostrar que las urnas se encuentran vacías, para luego
+                          posicionarlas con cinta engomada o adhesiva y ubicar los boletines de votos sobre la mesa receptora
+                          de votos. Las urnas deben estar en lugar visible. Enseguida se firma el acta de apertura de mesa, el
+                          Presidente declara abierta la mesa y da por iniciado el proceso de votación.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+
+
+                    <div class="card-supporting-text">
+                      <h3 class="card-primary-title">Proceso de Votación</h3>
+                        <p>
+                          <b>a ) </b>Ordenamiento de la Votación
+                            Los electores votarán en el orden de su
+                            llegada, para cuyo efecto deberán formar
+                            fila de a uno. La mesa dará preferencia
+                            a : (Art. 207, ley 834 C.E).
+                            - Mujeres embarazadas y minusválidos;
+                            - Enfermos;
+                            - Electores mayores de 75 años (ancianos);
+                            - Autoridades Electorales y Candidatos;
+                          </p>
+                          <p>
+                          <b>b ) </b>Identificación del Elector
+                            La identificación del elector, se acredita con
+                            la cédula de identidad civil vigente o de
+                            fecha vencida la que será entregada al turno
+                            de votar (Art.208, ley 834 CE y <b> Art. 110 REP</b>).
+                        </p>
+
+                    </div>
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura1.jpg">
+                    </div>
+                </div>
+
+
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura2.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                        <b>  c ) Vocales firman al dorso de la boleta y la entregan al elector.</b><br>
+                        Verificada la identidad del elector y su derecho a
+                        votar en la mesa, de acuerdo con el padrón de
+                        mesa, los dos Vocales firmarán al dorso de los
+                        boletines de voto y le entregarán al elector antes
+                        de pasar al cuarto oscuro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura3.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                        <b>  d ) El Elector entra al Cuarto Oscuro:</b><br>
+                        En el cuarto oscuro respectivo, el elector marcará
+                        los Boletines de Voto, y luego de doblarlos de tal
+                        forma que las firmas queden para afuera, volverá
+                        a la mesa (Art. 211, Ley 834 CE).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura4.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                        <b>  e ) Firma del Presidente de Mesa:</b><br>
+                        Una vez en la Mesa, el Elector Entrega los
+                        Boletines al Presidente quien los firmará al dorso
+                        <b>(Art. 211, Ley 834 CE).</b>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura5.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                        <b>  f ) Entintado del Dedo:</b><br>
+                        El Presidente devolverá al elector los Boletines de
+                        Voto y éste antes de depositar su voto en la urna,
+                        marcará con tinta indeleble hasta la cutícula de la
+                        uña del dedo índice de la mano derecha u otra a
+                        falta de éste.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+                    <div class="card-media">
+                        <img src="img/card-bg-in/apertura6.jpg">
+                    </div>
+
+                    <div class="card-supporting-text">
+                        <p>
+                        <b>  g ) Depósito del Voto en la Urna:</b><br>
+                        Seguidamente el elector depositará los boletines
+                        en las urnas y los miembros de Mesa anotarán en
+                        el padrón la palabra votó en la casilla
+                        correspondiente (Art. 211 Ley 834 CE).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nd2-card">
+
+                    <div class="card-supporting-text">
+                        <h3>  Secreto del Voto: Excepciones</h3>
+                        <p>
+                          El secreto del voto es el fundamento que garantiza el derecho de cada ciudadano de votar libremente
+                          sin revelar sus preferencias (Art. 7 Ley 834 CE) Pero, las personas que por defecto físico estén
+                          impedidos de marcar los boletines e introducirlos en las urnas, podrán servirse paras estas
+                          operaciones de una persona de su confianza. (Art. 217, Ley 834 CE).
+                        </p>
+                        <p>
+                          <h3>  Situaciones Especiales</h3>
+
+                      <b>  En que casos se puede denegar el derecho al voto (Art. 202 Ley 834 CE y Art. 110 REP)</b><br>
+                        Los miembros de Mesa podrán denegar el derecho al voto del elector, en los siguientes casos:
+                        <ul type="circle">
+                        <li>Cuando los datos de su cédula de identidad no coinciden manifiestamente con los del padrón de la
+                        mesa.</li>
+                        <li>Cuando la cédula de identidad sea ostensiblemente falsa o manifiestamente adulterada, pudiendo
+                        la mesa ordenar la detención de su portador, y,</li>
+                      <li> Cuando tenga algún dedo de la mano manchado con tina indeleble utilizada en el comicio.</li>
+                    </ul>
+                        <b>Retraso o suspensión del Acto de Votación</b><br>
+
+                        Solo por causa de fuerza mayor podrá no inicarse o suspenderse el acto de votación, bajo la
+                        responsabilidad del Presidente y los Vocales quienes al respecto tomarán la decisión fundada que se
+                        asentará en acta a los fines consiguientes (Art. 213 Ley 834 CE).<br>
+                        En caso de suspensión, el Presidente de Mesa comunicará de inmediato el hecho al Delegado
+                        Electoral. Si la duración de la interrupción no fuere superior a una hora y su causa permitiere que la
+                        votación se reanude sin influir en el resultado de la elección en la respectiva mesa, esta continuará
+                        tanto tiempo como hubiera estado suspendida (Art. 214 Ley 834 CE).<br>
+                        <b>Suspensión Definitiva</b><br>
+                        En caso de suspensión definitiva de la votación, no se tendrán en cuenta los votos emitidos ni se
+                        procederá a su escrutinio, debiendo los integrantes de la mesa proceder a la destrucción de los votos
+                        que se hayan depositado en la urna. (Art.215 Ley 834 CE).<br>
+                        <b>Sustitución de Miembros de Mesa</b><br>
+                        En caso de indisposición súbita del presidente de mesa o de cualquier otro Miembro de ella, durante el
+                        acto de sufragio o el escrutinio, quien asuma la presidencia, de acuerdo a las reglas de los Art. 177 y 197
+                        (Ley 834 CE) dispondrá que el personal de la mesa se complete con uno de los suplentes, o en
+                        ausencia de ellos, con cualquiera de los electores del padrón correspondiente, que se encuentre
+                        presente (Art. 216 Ley 834 CE). La sustitución se hará constar en acta de sustitución y se hará de
+                        acuerdo al procedimiento establecido para los casos de ausencia de un miembro de mesa.
+
+                      </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

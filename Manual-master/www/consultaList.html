@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }  @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }           @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+    </style>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="vendor/wow/animate.css" />
+    <link rel="stylesheet" href="css/nativedroid2.css" />
+    <link rel="stylesheet" href="css/nativedroid2.color.red.css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.mobile.min.js"></script>
+    <script src="vendor/waves/waves.min.js"></script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="js/nativedroid2.js"></script>
+    <script src="nd2settings.js"></script>
+    <script src="js/search.js"></script>
+
+    <!-- Uncomment the following scripts if you convert your "Standard HTML5" project into a "Cordova" project. -->
+    <!-- <script src="cordova.js"></script> -->          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <!-- <script src="js/app.js"></script> -->           <!-- recommended location of your JavaScript code relative to other JS files -->
+    <!-- <script src="xdk/init-dev.js"></script> -->     <!-- normalizes device and document ready events, see README for details -->
+
+    <script>
+        $(document).ready(function(){
+
+            $.ajax(
+            {
+                type: "POST",
+                url: "http://manual-php.j.facilcloud.com/manual/listar.php",
+                dataType: "json",
+                crossDomain: true,
+                beforeSend: function () {
+                            //$("#resultado").html("Procesando, espere por favor...");
+                            //$("#wait").css("display", "block");
+                            $("#mensaje").popup("open");
+                            console.log("Inicio");
+                        },
+                        success: function (data, status, jqXHR) {                                
+                            console.log("Recibimos algo "+JSON.stringify(data));
+
+                            for(i in data)
+                            {
+                                console.log(data[i]);
+                        /*
+                        $("#div1").append("<div>"+
+                            "<p>"+data[i].asunto+              
+                            "</p>"+              
+                            "</div>");
+                            */
+                            var card = '<div class="nd2-card">'+
+                            '<div class="card-media">'+
+                            '<img src="img/examples/card_bg_1.jpg">'+
+                            "<div class='card-media-overlay with-background'>"+
+                            '<div class="card-title has-supporting-text">'+
+                            '<h3 class="card-primary-title">'+data[i].asunto+
+                            '</h3>'+
+                            '<h5 class="card-subtitle">'+ data[i].detalle+
+                            '</h5>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>';
+
+                            $("#div1").append(card);
+
+
+                        }
+                        $("#mensaje").popup("close");
+                        console.log("Fin");   
+
+                    },
+                    error: function (xhr) {
+                        console.log("Error al traer info: "+xhr.responseText);
+
+                    }
+                });
+
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+    <div data-role="page">
+        <nd2-include data-src="panel.left.html"></nd2-include>
+        <div data-role="header" data-position="fixed" class="wow"> 
+            <a href="#leftpanel" class="ui-btn ui-btn-left wow" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+            <h1 class="wow" data-wow-delay='0.4s'>Manual</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <h2>Lista de Consultas</h2>
+            <div id="div1"></div>
+
+            <div data-role="popup" id="mensaje" data-position-to="window" data-transition="pop"
+            data-dismissible="false">
+            <img src='img/ajax-loader.gif'/>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
